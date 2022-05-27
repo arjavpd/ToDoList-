@@ -1,35 +1,20 @@
 import React, {Component} from 'react';
-import Todos from './Todos';
-import AddTodo from './AddTodo';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import Navbar from './Components/Navbar';
+import Home from './Screens/Home';
+import About from './Screens/About';
 
 class App extends Component {
-	state = {
-		todos: [
-			{id: 1, content: 'buy some bananas'},
-			{id: 2, content: 'play mario kart'},
-		],
-	};
-	addTodo = newTodo => {
-		newTodo.id = Math.random();
-		let todosCopy = [...this.state.todos, newTodo];
-		this.setState({
-			todos: todosCopy,
-		});
-	};
-	deleteTodo = id => {
-		const todosCopy = this.state.todos.filter(todo => {
-			return todo.id !== id;
-		});
-		this.setState({
-			todos: todosCopy,
-		});
-	};
 	render() {
 		return (
-			<div className="todo-app container">
-				<h1 className="center blue-text">Todo's</h1>
-				<Todos todos={this.state.todos} deleteTodo={this.deleteTodo} />
-				<AddTodo addTodo={this.addTodo} />
+			<div className="App">
+				<BrowserRouter>
+					<Navbar />
+					<Routes>
+						<Route path="/" element={<Home />} />
+						<Route path="/about" element={<About />} />
+					</Routes>
+				</BrowserRouter>
 			</div>
 		);
 	}
