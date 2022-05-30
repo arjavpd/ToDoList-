@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Navbar = () => {
+const Navbar = props => {
 	return (
 		<nav className="nav-wrapper red darken-3">
 			<div className="container">
