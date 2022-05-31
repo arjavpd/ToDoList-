@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Todos from '../Components/Todos';
 import AddTodo from '../Components/AddTodo';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 class Home extends Component {
 	state = {
@@ -33,6 +34,7 @@ class Home extends Component {
 				posts: res.data.slice(0, 10),
 			});
 		});
+		console.log(this.props);
 	}
 	render() {
 		const {posts} = this.state;
@@ -41,7 +43,9 @@ class Home extends Component {
 				return (
 					<div className="post card" key={post.id}>
 						<div className="card-content">
-							<span className="card-title">{post.title}</span>
+							<Link to={'/posts/' + post.id}>
+								<span className="card-title">{post.title}</span>
+							</Link>
 							<p>{post.body}</p>
 						</div>
 					</div>

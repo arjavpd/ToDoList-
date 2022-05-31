@@ -1,5 +1,5 @@
 import React from 'react';
-import Rainbow from '../Components/hoc/Rainbow';
+import Rainbow from '../hoc/Rainbow';
 
 const About = props => {
 	return (
